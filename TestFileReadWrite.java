@@ -13,6 +13,10 @@ public class TestFileReadWrite {
 			  {"4","9/1/2018","12/1/2018","Perl 3","Perl Advance",35,1},
 			};
 		
+		//test student
+		Student st = new Student("Cliff","email@gmail.com");
+		System.out.println("Welcome " + st.getName());
+		
 		//Outputs all courses
 		//System.out.print(a.ReadAllCourses().replaceAll(",", "\t"));
 		printHeader();
@@ -42,25 +46,25 @@ public class TestFileReadWrite {
 		case 1:
 			String cn1 = courses[0][0] + "," + courses[0][1] + "," + courses[0][2] + "," +
 						courses[0][3] + "," + courses[0][4];
-			a.WriteStudenFile(cn1);
+			a.WriteStudenFile(cn1,st.getName());
 			System.out.println("Registration complete!");
 			break;
 		case 2:
 			String cn2 = courses[1][0] + "," + courses[1][1] + "," + courses[1][2] + "," +
 						courses[1][3] + "," + courses[1][4];
-			a.WriteStudenFile(cn2);
+			a.WriteStudenFile(cn2,st.getName());
 			System.out.println("Registration complete!");
 			break;
 		case 3:
 			String cn3 = courses[2][0] + "," + courses[2][1] + "," + courses[2][2] + "," +
 						courses[2][3] + "," + courses[2][4];
-			a.WriteStudenFile(cn3);
+			a.WriteStudenFile(cn3,st.getName());
 			System.out.println("Registration complete!");
 			break;
 		case 4:
 			String cn4 = courses[3][0] + "," + courses[3][1] + "," + courses[3][2] + "," +
 						courses[3][3] + "," + courses[3][4];
-			a.WriteStudenFile(cn4);
+			a.WriteStudenFile(cn4,st.getName());
 			System.out.println("Registration complete!");
 			break;
 		}
@@ -72,7 +76,7 @@ public class TestFileReadWrite {
 		
 		//output student course list
 		if(yn.equals("y"))
-			System.out.print(a.ReadStudentFile("CliffHy99283").replaceAll(",", "\t"));
+			System.out.print(a.ReadStudentFile(st.getName()).replaceAll(",", "\t"));
 		
 		//Un-register from a course
 		System.out.print("Do you want to un-register from a course? (y/n) ");
@@ -82,7 +86,7 @@ public class TestFileReadWrite {
 			System.out.print("Course ID to un-register? ");
 			String delID = input.next();
 			char sID = delID.charAt(0);
-			a.DeleteEnrollment(sID);
+			a.DeleteEnrollment(sID,st.getName());
 			
 			
 		}

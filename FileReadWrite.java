@@ -3,11 +3,9 @@ import java.nio.file.Files;
 import java.util.*;
 
 public class FileReadWrite {
-	
-	private  String ID = "CliffHy99283"; //replace with Student class variable
+
     final private String courseFile = "Courses.txt";
-    final private String studentCourseList = ID + "_" + "Courses.txt";
-   
+    final private String studentCourseList = "_Courses.txt";
 
     //Not needed if course list IS NOT stored in a file
 	public String ReadAllCourses(){
@@ -39,14 +37,14 @@ public class FileReadWrite {
 
 	}
 	
-	public String ReadStudentFile(String StudentID){
+	public String ReadStudentFile(String name){
 		// Hold one line at a time
         String line = null;
         String allLines = "";
         
 		try{
 			//new file object
-        	File file = new File(StudentID + "_Courses.txt");
+        	File file = new File(name + studentCourseList);
         	
         	//read in file contents
         	Scanner input = new Scanner(file);
@@ -65,13 +63,13 @@ public class FileReadWrite {
 		return allLines;
 	}
 	
-	public void WriteStudenFile(String text){
+	public void WriteStudenFile(String text, String name){
 		//Each student will have a unique file that has all courses for that particular
 		//student. File format is "<ID>_Courses.txt"
 
         try {
             // Use FileWriter instead of File so we can append to existing file
-            FileWriter file = new FileWriter(studentCourseList,true);
+            FileWriter file = new FileWriter(name + studentCourseList,true);
             
             // write to file. Include \n since write doesn't
             //automatically add a newline
@@ -81,24 +79,22 @@ public class FileReadWrite {
             file.close();
         }
         catch(IOException ex) {
-            System.out.println("Error writing to file '" + studentCourseList + "'");
+            System.out.println("Error writing to file '" + name + studentCourseList + "'");
         }
 	}
 	
-	public void DeleteEnrollment(char cID){
-		// Hold one line at a time
-        //String line = null;
-        //String currentLine;
+	public void DeleteEnrollment(char cID, String name){
         
 		try{
-			File file = new File(studentCourseList);
-			File temp = new File("Temp-" + studentCourseList);
+			File file = new File(name + studentCourseList);
+			File temp = new File("Temp-" + name + studentCourseList); //temp file
 			
 			PrintWriter output = new PrintWriter(new FileWriter(temp));
 			
 			Files.lines(file.toPath()).filter(line->!(line.charAt(0) == cID))
 									.forEach(output::println);
-			output.flush();
+			
+			output.flush(); //write contents of buffer to disk
 			output.close();
 			temp.renameTo(file);
 		}
