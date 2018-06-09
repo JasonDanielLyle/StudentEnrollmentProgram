@@ -21,7 +21,7 @@ public class Course {
 		
 		
 		// constructors
-		public Course (String courseID, String courseName, String courseDescription, String meetingTime, String startDate, String endDate, int enrollmentLimit, int currentEnrollment)	{
+		Course (String courseID, String courseName, String courseDescription, String meetingTime, String startDate, String endDate, int enrollmentLimit, int currentEnrollment)	{
 			// throw exceptions
 			if(currentEnrollment > enrollmentLimit)
 				throw new IllegalArgumentException("Course has already reached enrollment capacity.");
