@@ -4,16 +4,17 @@ public class Student {
     //datafields
     private String name;     // student name
     private String email;    // email 
-  
+    private String ID;       // studentID
     
     
     
     //constructors
     public Student(){} 
     
-    public Student(String name, String email) {
+    public Student(String name, String email, String ID) {
         this.name   = name;
         this.email   = email;
+	this.ID = ID;
         }
     
     
@@ -31,6 +32,13 @@ public class Student {
     } 
     public void setEmail(String b){
 	this.email = b;
+    }
+    
+     public String getID(){
+         return this.ID;
+    } 
+    public void setEmail(String c){
+	this.ID = c;
     }
     
    
