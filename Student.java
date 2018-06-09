@@ -37,7 +37,7 @@ public class Student {
      public String getID(){
          return this.ID;
     } 
-    public void setEmail(String c){
+    public void setID(String c){
 	this.ID = c;
     }
     
