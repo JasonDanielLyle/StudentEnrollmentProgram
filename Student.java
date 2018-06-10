@@ -2,7 +2,9 @@
 public class Student {
     
     //datafields
-    private String name;     // student name
+    //Split name into firstName and lastName - hghmh Mehrdad Haghi 10/06/18
+    private String firstName; // student first name
+    private String lastName   // student last name
     private String email;    // email 
     private String ID;       // studentID
     
@@ -11,21 +13,30 @@ public class Student {
     //constructors
     public Student(){} 
     
-    public Student(String name, String email, String ID) {
-        this.name   = name;
-        this.email   = email;
-	this.ID = ID;
-        }
+   //Split name into firstName and lastName - hghmh Mehrdad Haghi
+    public Student(String firstName, String lastName, String email, String ID) {
+    this.firstName   = firstName;
+    this.lastName    = lastName;
+    this.email	     = email;
+    this.ID	     = ID;
+    }
     
     
     //getter and setter methods
-    public String getName(){
-	return this.name;
+    //Split getName/setName into getFirstName/setFirstName and getLastName/setLastName - hghmh Mehrdad Haghi
+    public String getFirstName(){
+	return this.firstName;
 	}
-    public void setName(String a){
+    public void setFirstName(String a){
 	this.name = a;
 	}
 	
+    public String getLastName(){
+	return this.lastName;
+	}
+    public void setLastName(String a){
+	this.name = a;
+	}
     
     public String getEmail(){
 	return this.email;
