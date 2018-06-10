@@ -1,9 +1,17 @@
+//import java.awt.Dimension;
+//import java.awt.GridLayout;
 import java.util.*;
+//import javax.swing.*;
+
 
 public class TestFileReadWrite {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		new Login();
+		
+		//System.out.println("Username: " + lg.usertext.getText() + " Password: " + lg.pwtext.getText());
 		
 		//hard coded the courses in a multidimensional array for testing
 		Object[][] courses = 
@@ -14,8 +22,9 @@ public class TestFileReadWrite {
 			};
 		
 		//test student
-		Student st = new Student("Cliff","email@gmail.com");
+		Student st = new Student("Cliff","email@gmail.com","1");
 		System.out.println("Welcome " + st.getName());
+		
 		
 		//Outputs all courses
 		//System.out.print(a.ReadAllCourses().replaceAll(",", "\t"));
