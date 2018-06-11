@@ -12,7 +12,7 @@ public class Course {
 		private String courseID;			//course ID number as string of letters, numbers, or combination
 		private String courseDescription;	//course summary
 		private String meetingTime;			//course meeting time (e.g. 11:00-13:00)
-		private int numberOfStudents;		//number of students currently enrolled
+		private int currentEnrollment;		//number of students currently enrolled
 		private int enrollmentLimit;		//max capacity for course
 		private String startDate;			//course start date
 		private String endDate;				//course end date
