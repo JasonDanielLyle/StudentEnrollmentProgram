@@ -63,7 +63,7 @@ public class FileReadWrite {
 		return allLines;
 	}
 	
-	public void WriteStudenFile(String text, String name){
+	public void WriteStudentFile(String text, String name){
 		//Each student will have a unique file that has all courses for that particular
 		//student. File format is "<ID>_Courses.txt"
 
@@ -81,6 +81,64 @@ public class FileReadWrite {
         catch(IOException ex) {
             System.out.println("Error writing to file '" + name + studentCourseList + "'");
         }
+	}
+	
+	public void RegisterNew(String name, String passwd, String email){
+		//String line;
+
+        try {
+            // Use FileWriter instead of File so we can append to existing file
+            FileWriter file = new FileWriter("StudentLists.txt",true);
+            
+            int ID = Integer.parseInt(getLastID()) + 1;
+            
+            // write to file. Include \n since write doesn't
+            //automatically add a newline
+            file.write(ID + "," + name + "," + passwd + "," + email +"\n");
+
+            // Close file
+            file.close();
+        }
+        catch(IOException ex) {
+            System.out.println("Error writing to file '" + name + studentCourseList + "'");
+        }
+	}
+	//find max ID
+	//ASSUMPTION - file has records in descending order
+	String getLastID(){
+		String line = null;
+		String[] lineArray;
+		ArrayList<String> studentInfo = new ArrayList<String>();
+		String lastStudentID = "";
+        
+		try{
+			//new file object
+        	File file = new File("StudentLists.txt");
+        	
+        	//read in file contents one row at a time
+        	Scanner input = new Scanner(file);
+            while(input.hasNext()){
+            	line = input.nextLine();
+            	lineArray = line.split("[,]");
+            	
+            	//add data to the arraylist
+            	 for (int i = 0; i < lineArray.length; i++) {
+            		 studentInfo.add(lineArray[i]);
+            	 }
+            }
+            
+            //get last row ID field value
+            lastStudentID = studentInfo.get(studentInfo.size() - 4); //subtract 4 total columns
+            //System.out.println(lastStudentID);
+
+            // Close file
+            input.close();  
+		}
+		catch(FileNotFoundException ex) {
+            System.out.println("Unable to open student file.");                
+        }
+		return lastStudentID;
+
 	}
 	
 	public void DeleteEnrollment(char cID, String name){
