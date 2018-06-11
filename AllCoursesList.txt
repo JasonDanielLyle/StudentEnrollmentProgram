@@ -1,0 +1,2 @@
+XCI-121,Intro to Java Programming,Beginner programming with Java,08:00AM,06/18/2018,09/24/2018,30,10
+XCI-215,Intro to Perl Programming,Beginner programming with Perl,08:00AM,06/18/2018,09/24/2018,30,10

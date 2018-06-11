@@ -1,3 +1,4 @@
+import java.util.*;
 
 public class TeamAEnrollmentProgram {
 
@@ -7,7 +8,15 @@ public class TeamAEnrollmentProgram {
 		new Login();
 		
 		//new RegisterNewStudent();
+
+		/*//TEST Course.getCourselist() method
+		Course courses = new Course();
+		ArrayList<String> list = courses.getCourselist();
 		
+		for(int i=0;i<list.size();i++){
+   		 System.out.print(list.get(i));
+		}
+		*/
 	}
 
 }

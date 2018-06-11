@@ -1,5 +1,6 @@
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,8 @@ public class Course {
 		
 		
 		// constructors
+		Course(){}
+		
 		Course (String courseID, String courseName, String courseDescription, String meetingTime, String startDate, String endDate, int enrollmentLimit, int currentEnrollment)	{
 			// throw exceptions
 			if(currentEnrollment > enrollmentLimit)
@@ -40,6 +43,28 @@ public class Course {
 			this.enrollmentLimit = enrollmentLimit;
 			this.currentEnrollment = currentEnrollment;
 			
+		}
+		
+		//read in all course data into ArrayList
+		//return type ArrayList<String>
+		public ArrayList<String> getCourselist(){
+			String[] lineArray;
+			ArrayList<String> courseInfo = new ArrayList<String>();
+			
+			//new file object
+        	//File file = new File("StudentLists.txt");
+			
+			FileReadWrite courses = new FileReadWrite();
+			String text = courses.ReadAllCourses();
+
+			lineArray = text.split("[,]");
+            	
+        	//add data to the arraylist
+        	 for (int i = 0; i < lineArray.length; i++) {
+        		 courseInfo.add(lineArray[i]);
+        	 }
+        	 
+        	 return courseInfo;
 		}
 		
 		// accessors
