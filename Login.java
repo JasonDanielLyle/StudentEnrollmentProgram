@@ -74,7 +74,7 @@ public class Login extends JFrame {
 		            		break;
 		            	 }
 		            	 
-		            	 studentInfo.clear();
+		            	 studentInfo.clear(); //no match so clear and load next line
 		            		 
 		            }
 
@@ -85,16 +85,16 @@ public class Login extends JFrame {
 		            System.out.println("Unable to open student file.");                
 		        }
 				
-				System.out.println(userExists);
+				//System.out.println(userExists);
 				
 				if(userExists == true){
 					//show enrollment screen
 				}
-				else{
+				else{ //output failed authentication using JOptionPane
 					JOptionPane failAuth = new JOptionPane("Failed authentication. Please try again.",JOptionPane.WARNING_MESSAGE);
 					JDialog dialog = failAuth.createDialog("Error!");
-					dialog.setAlwaysOnTop(true);
-					dialog.setVisible(true);
+					dialog.setAlwaysOnTop(true); //always on top
+					dialog.setVisible(true); //make visiable
 				}
 			  
 		  }
