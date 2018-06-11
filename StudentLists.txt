@@ -1,3 +1,2 @@
-1,Cliff,javaiscool,cliff@uci.edu
-2,Jason,javaisfun,jason@uci.edu
-3,Kesha,wowjava,kesha@uci.edu
+1,cliff00,java1,Cliff,Hy,cliff@email.com
+2,johndoe11,javaisfun,John,Doe,jdoe@email.com

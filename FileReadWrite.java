@@ -83,26 +83,37 @@ public class FileReadWrite {
         }
 	}
 	
-	public void RegisterNew(String name, String passwd, String email){
-		//String line;
-
-        try {
-            // Use FileWriter instead of File so we can append to existing file
-            FileWriter file = new FileWriter("StudentLists.txt",true);
-            
-            int ID = Integer.parseInt(getLastID()) + 1;
-            
-            // write to file. Include \n since write doesn't
-            //automatically add a newline
-            file.write(ID + "," + name + "," + passwd + "," + email +"\n");
-
-            // Close file
-            file.close();
-        }
-        catch(IOException ex) {
-            System.out.println("Error writing to file '" + name + studentCourseList + "'");
-        }
+	//write new student to StudentLists.txt file -- unique by ID
+	public void RegisterNew(String name, String passwd/*, String fname, String lname*/, String email){
+		//deleting this method causes RegisterNew1 method to error.
+		//don't know why so leaving it here for now to investigate later
 	}
+	
+	//write new student to StudentLists.txt file -- unique by ID
+		public void RegisterNew1(String name, String passwd, String fname, String lname, String email){
+			//String line;
+
+	        try {
+	            // Use FileWriter instead of File so we can append to existing file
+	            FileWriter file = new FileWriter("StudentLists.txt",true);
+	            
+	            int ID = Integer.parseInt(getLastID()) + 1;
+	            
+	            // write to file. Include \n since write doesn't
+	            //automatically add a newline
+	            file.write(ID + "," + name + "," + passwd + "," + fname + "," + lname + "," + email +"\n");
+	            
+	            //set student information in Student class
+	            //new Student(fname,lname,email,ID+"");
+
+	            // Close file
+	            file.close();
+	        }
+	        catch(IOException ex) {
+	            System.out.println("Error writing to file '" + name + studentCourseList + "'");
+	        }
+		}
+		
 	//find max ID
 	//ASSUMPTION - file has records in descending order
 	String getLastID(){
@@ -128,8 +139,10 @@ public class FileReadWrite {
             }
             
             //get last row ID field value
-            lastStudentID = studentInfo.get(studentInfo.size() - 4); //subtract 4 total columns
-            //System.out.println(lastStudentID);
+            if(studentInfo.size() == 0)
+            	lastStudentID = "0";
+            else
+            	lastStudentID = studentInfo.get(studentInfo.size() - 6); //subtract 6 total columns
 
             // Close file
             input.close();  
@@ -163,4 +176,6 @@ public class FileReadWrite {
 			e.printStackTrace();
 		}
 	}
+	
+
 }

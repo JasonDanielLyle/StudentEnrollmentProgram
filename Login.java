@@ -21,7 +21,7 @@ public class Login extends JFrame {
 		//setLayout(new BorderLayout());
 		
 		//assign labels and buttons
-		title = new JLabel("Course Enrollment Login");
+		title = new JLabel("Welcome to Team A Course Enrollment Program. \nPlease log in or register to enroll.");
 		username = new JLabel("Please Enter Username: ");
 		usertext = new JTextField(15);
 		password = new JLabel("Please Enter Password: ");
@@ -29,6 +29,10 @@ public class Login extends JFrame {
 		bt1 = new JButton("Login");
 		bt2 = new JButton("Cancel");
 		bt3 = new JButton("Register");
+		
+		//panels
+		JPanel header = new JPanel(new FlowLayout());
+		JPanel select = new JPanel(new FlowLayout(FlowLayout.CENTER,100,10));
 		
 		//action listener - login authentication
 		bt1.addActionListener(new ActionListener()
@@ -56,13 +60,11 @@ public class Login extends JFrame {
 		  public void actionPerformed(ActionEvent e)
 		  {
 		    // Do something
+			  new RegisterNewStudent();
+			  setVisible(false);
 		  }
 		});
 		
-		
-		//panels
-		JPanel header = new JPanel(new FlowLayout());
-		JPanel select = new JPanel(new FlowLayout(FlowLayout.CENTER,75,10));
 		
 		//add labels and buttons to panels
 		//not sure the ordering so just moved things around until layout looks good
@@ -76,11 +78,11 @@ public class Login extends JFrame {
 		select.add(bt3);
 		
 		//add to frame
-		add(header);
+		add(header,BorderLayout.NORTH);
 		add(select);
 		
 		//set size
-		setSize(400,300);
+		setSize(600,300);
 		//default close
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);	
