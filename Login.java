@@ -71,6 +71,7 @@ public class Login extends JFrame {
 		            	 //if yes, set userExists to true and break out of loop
 		            	 if(studentInfo.get(1).equals(usertext.getText()) && studentInfo.get(2).equals(pwtext.getText()) ) {
 		            		userExists = true;
+		            		new Student(studentInfo.get(3),studentInfo.get(4),studentInfo.get(5),studentInfo.get(0));
 		            		break;
 		            	 }
 		            	 

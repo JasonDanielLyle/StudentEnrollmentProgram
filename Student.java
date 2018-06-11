@@ -6,7 +6,7 @@ public class Student {
     private String firstName; // student first name
     private String lastName;   // student last name
     private String email;    // email 
-    private int ID;       // studentID
+    private String ID;       // studentID
     
     
     
@@ -14,7 +14,7 @@ public class Student {
     public Student(){} 
     
    //Split name into firstName and lastName - hghmh Mehrdad Haghi
-    public Student(String firstName, String lastName, String email, int ID) {
+    public Student(String firstName, String lastName, String email, String ID) {
     this.firstName   = firstName;
     this.lastName    = lastName;
     this.email	     = email;
@@ -45,10 +45,10 @@ public class Student {
 	this.email = b;
     }
     
-     public int getID(){
+     public String getID(){
          return this.ID;
     } 
-    public void setID(int c){
+    public void setID(String c){
 	this.ID = c;
     }
     
