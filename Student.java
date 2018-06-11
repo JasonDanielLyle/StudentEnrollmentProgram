@@ -4,7 +4,7 @@ public class Student {
     //datafields
     //Split name into firstName and lastName - hghmh Mehrdad Haghi 10/06/18
     private String firstName; // student first name
-    private String lastName   // student last name
+    private String lastName;   // student last name
     private String email;    // email 
     private String ID;       // studentID
     
@@ -28,14 +28,14 @@ public class Student {
 	return this.firstName;
 	}
     public void setFirstName(String a){
-	this.name = a;
+	this.firstName = a;
 	}
 	
     public String getLastName(){
 	return this.lastName;
 	}
     public void setLastName(String a){
-	this.name = a;
+	this.lastName = a;
 	}
     
     public String getEmail(){
