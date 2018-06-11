@@ -1,6 +1,11 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import javax.swing.*;
 
 public class Login extends JFrame {
@@ -39,7 +44,58 @@ public class Login extends JFrame {
 		{
 		  public void actionPerformed(ActionEvent e)
 		  {
-		    // Do something
+			// Hold one line at a time
+		        String line = null;
+		        String[] lineArray;
+		        ArrayList<String> studentInfo = new ArrayList<String>();
+		        boolean userExists = false;
+		        
+				try{
+					//new file object
+		        	File file = new File("StudentLists.txt");
+		     
+		        	//read in file contents
+		        	Scanner input = new Scanner(file);
+		            while(input.hasNext()){
+		            	line = input.nextLine();
+		            	lineArray = line.split("[,]");
+		            	
+		            	//add data to the arraylist
+		            	 for (int i = 0; i < lineArray.length; i++) {
+		            		 studentInfo.add(lineArray[i]);
+		            	 }
+		            	 
+		            	 //System.out.println("Username: " + studentInfo.get(1) + " Password: " + studentInfo.get(2));
+		            	 
+		            	 //check the username (2nd element) and password (3rd element) equals user input values
+		            	 //if yes, set userExists to true and break out of loop
+		            	 if(studentInfo.get(1).equals(usertext.getText()) && studentInfo.get(2).equals(pwtext.getText()) ) {
+		            		userExists = true;
+		            		break;
+		            	 }
+		            	 
+		            	 studentInfo.clear();
+		            		 
+		            }
+
+		            // Close file
+		            input.close();  
+				}
+				catch(FileNotFoundException ex) {
+		            System.out.println("Unable to open student file.");                
+		        }
+				
+				System.out.println(userExists);
+				
+				if(userExists == true){
+					//show enrollment screen
+				}
+				else{
+					JOptionPane failAuth = new JOptionPane("Failed authentication. Please try again.",JOptionPane.WARNING_MESSAGE);
+					JDialog dialog = failAuth.createDialog("Error!");
+					dialog.setAlwaysOnTop(true);
+					dialog.setVisible(true);
+				}
 			  
 		  }
 		});
