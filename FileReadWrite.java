@@ -4,7 +4,7 @@ import java.util.*;
 
 public class FileReadWrite {
 
-    final private String courseFile = "Courses.txt";
+    final private String courseFile = "AllCoursesList.txt";
     final private String studentCourseList = "_Courses.txt";
 
     //Not needed if course list IS NOT stored in a file
@@ -37,21 +37,30 @@ public class FileReadWrite {
 
 	}
 	
-	public String ReadStudentFile(String name){
+	public ArrayList<String> ReadStudentFile(String ID, String name){
 		// Hold one line at a time
         String line = null;
         String allLines = "";
+        String[] lineArray;
+		ArrayList<String> studentInfo = new ArrayList<String>();
         
 		try{
 			//new file object
-        	File file = new File(name + studentCourseList);
+        	File file = new File(ID + "_" + name + studentCourseList);
         	
         	//read in file contents
         	Scanner input = new Scanner(file);
             while(input.hasNext()){
             	line = input.nextLine();
             	//System.out.println(line.replaceAll(",", "\t"));
-            	allLines += line + "\n";
+            	//allLines += line + "\n";
+            	
+            	lineArray = line.split("[,]");
+            	
+            	//add data to the arraylist
+            	 for (int i = 0; i < lineArray.length; i++) {
+            		 studentInfo.add(lineArray[i]);
+            	 }
             }
 
             // Close file
@@ -60,7 +69,7 @@ public class FileReadWrite {
 		catch(FileNotFoundException ex) {
             System.out.println("Unable to open student file.");                
         }
-		return allLines;
+		return studentInfo;
 	}
 	
 	public void WriteStudentFile(String text, String name){
@@ -104,7 +113,7 @@ public class FileReadWrite {
 	            file.write(ID + "," + name + "," + passwd + "," + fname + "," + lname + "," + email +"\n");
 	            
 	            //set student information in Student class
-	            //new Student(fname,lname,email,ID+"");
+	            new Student(name,fname,lname,email,ID+"");
 
 	            // Close file
 	            file.close();
