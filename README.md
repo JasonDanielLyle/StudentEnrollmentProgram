@@ -2,31 +2,26 @@
 ### _Java Programming I : Team A_
 ##### UC Irvine Extension Spring 2018 
 
+
 We have built a console-based application that serves as a self-service course registration system like those used by colleges and universities. The program has several key features to ensure it meets functionality expectations for programs of this kind as well as security of student information.
 
-### Markdown
+_This program was built to fulfill course requirements for the spring session of Java Programming I through UC Irvine Extension.
+Contributers include:_
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+- @hycliff
+- @hghMH
+- @JasonDanielLyle
+- @lmfreeee
+- @Ken-Watson
 
-```markdown
-Syntax highlighted code block
+### **Program Functionalities**
 
-# Header 1
-## Header 2
-### Header 3
+The program has four main functionalities:
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+1. A login window that authenticates existing users and creates files for new users. 
+2. A student profile page that displays courses in which the student is currently enrolled.
+3. The ability to view all available courses and register for the desired course from that screen.
+4. A registration status screen that indicates success or failure in registering for the desired course.
 
 ### Jekyll Themes
 
