@@ -18,7 +18,7 @@ public class StudentEnrollments extends JFrame{
 	public StudentEnrollments(String ID, String uname, String fname, String lname){
 		Student currSt = new Student();
 		
-		FileReadWrite stList = new FileReadWrite();
+		FileReadWrite_BKP stList = new FileReadWrite_BKP();
 		ArrayList<String> text = stList.ReadStudentFile(ID,uname); //call method to get course data
 		String newText = "";
 		

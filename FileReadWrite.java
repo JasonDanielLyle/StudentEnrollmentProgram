@@ -63,7 +63,7 @@ public class FileReadWrite {
             	 }
             }
 
-            // Close file
+            // Close file 
             input.close();  
 		}
 		catch(FileNotFoundException ex) {
