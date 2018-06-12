@@ -36,8 +36,8 @@ The program has a basic UI that provides several features intended to keep the r
 
 The program will not permit enrollment if any of the following criteria are violated:
 
-1. The course does not exist.
-2. The course is already at maximum capacity.
+1. The course does not exist
+2. The course is already at maximum capacity
 
 The program will not permit a student to un-enroll from a course if any of the following criteria are violated:
 
