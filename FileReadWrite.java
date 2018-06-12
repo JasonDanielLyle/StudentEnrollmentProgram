@@ -37,14 +37,14 @@ public class FileReadWrite {
 
 	}
 	
-	public String ReadStudentFile(String name){
+	public String ReadStudentFile(String ID){
 		// Hold one line at a time
         String line = null;
         String allLines = "";
         
 		try{
 			//new file object
-        	File file = new File(name + studentCourseList);
+        	File file = new File(ID + studentCourseList);
         	
         	//read in file contents
         	Scanner input = new Scanner(file);
@@ -63,13 +63,13 @@ public class FileReadWrite {
 		return allLines;
 	}
 	
-	public void WriteStudentFile(String text, String name){
+	public void WriteStudentFile(String text, String ID){
 		//Each student will have a unique file that has all courses for that particular
 		//student. File format is "<ID>_Courses.txt"
 
         try {
             // Use FileWriter instead of File so we can append to existing file
-            FileWriter file = new FileWriter(name + studentCourseList,true);
+            FileWriter file = new FileWriter(ID + studentCourseList,true);
             
             // write to file. Include \n since write doesn't
             //automatically add a newline
@@ -79,18 +79,18 @@ public class FileReadWrite {
             file.close();
         }
         catch(IOException ex) {
-            System.out.println("Error writing to file '" + name + studentCourseList + "'");
+            System.out.println("Error writing to file '" + ID + studentCourseList + "'");
         }
 	}
 	
 	//write new student to StudentLists.txt file -- unique by ID
-	public void RegisterNew(String name, String passwd/*, String fname, String lname*/, String email){
+	public void RegisterNew(String ID, String passwd/*, String fname, String lname*/, String email){
 		//deleting this method causes RegisterNew1 method to error.
 		//don't know why so leaving it here for now to investigate later
 	}
 	
 	//write new student to StudentLists.txt file -- unique by ID
-		public void RegisterNew1(String name, String passwd, String fname, String lname, String email){
+		public void RegisterNew1(String ID, String passwd, String fname, String lname, String email){
 			//String line;
 
 	        try {
@@ -101,7 +101,7 @@ public class FileReadWrite {
 	            
 	            // write to file. Include \n since write doesn't
 	            //automatically add a newline
-	            file.write(ID + "," + name + "," + passwd + "," + fname + "," + lname + "," + email +"\n");
+	            file.write(ID + "," + passwd + "," + fname + "," + lname + "," + email +"\n");
 	            
 	            //set student information in Student class
 	            //new Student(fname,lname,email,ID+"");
@@ -110,7 +110,7 @@ public class FileReadWrite {
 	            file.close();
 	        }
 	        catch(IOException ex) {
-	            System.out.println("Error writing to file '" + name + studentCourseList + "'");
+	            System.out.println("Error writing to file '" + ID + studentCourseList + "'");
 	        }
 		}
 		
