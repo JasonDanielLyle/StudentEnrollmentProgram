@@ -27,10 +27,21 @@ The program has four main functionalities:
 
 The program has a basic UI that provides several features intended to keep the registration process simple and straightforward for the user:
 
-1. An alphabetical list of courses that inclues the course name, course number, course description, meeting time, start and end date, number of students currently enrolled, and enrollment capacity
-2. The ability for the student/user to enroll and un-enroll from a course
-3. A page where the student/user may view courses for which they are already registered. 
+1. A welcome screen from which the student/user may choose whether they would like to view and enroll in available courses or view and un-enroll from currently enrolled courses 
+2. An alphabetical list of courses that inclues the course name, course number, course description, meeting time, start and end date, number of students currently enrolled, and enrollment capacity
+3. The ability for the student/user to enroll and un-enroll from a course
+4. A page where the student/user may view courses for which they are already registered
 
-### Support or Contact
+### **Program Safeguards**
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+The program will not permit enrollment if any of the following criteria are violated:
+
+1. The course does not exist.
+2. The course is already at maximum capacity.
+
+The program will not permit a student to un-enroll from a course if any of the following criteria are violated:
+
+1. The student is not currently enrolled in the course from which they are attempting to un-enroll
+2. The current number of students already enrolled in the course is zero
+
+For privacy reasons, the program also does not allow a student to see the registration information of another student. 
