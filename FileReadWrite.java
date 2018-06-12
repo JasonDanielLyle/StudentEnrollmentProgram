@@ -72,13 +72,13 @@ public class FileReadWrite {
 		return studentInfo;
 	}
 	
-	public void WriteStudentFile(String ID, String name, String text){
+	public void WriteStudentFile(String name, String text){
 		//Each student will have a unique file that has all courses for that particular
 		//student. File format is "<ID>_Courses.txt"
 
         try {
             // Use FileWriter instead of File so we can append to existing file
-            FileWriter file = new FileWriter(ID + "_" + name + studentCourseList,true);
+            FileWriter file = new FileWriter(Integer.parseInt(getLastID()) + 1 + "_" + name + studentCourseList,true);
             
             // write to file. Include \n since write doesn't
             //automatically add a newline
@@ -88,7 +88,7 @@ public class FileReadWrite {
             file.close();
         }
         catch(IOException ex) {
-            System.out.println("Error writing to file '" + ID + "_" + name + studentCourseList + "'");
+            System.out.println("Error writing to file '" + Integer.parseInt(getLastID()) + 1 + "_" + name + studentCourseList + "'");
         }
 	}
 	

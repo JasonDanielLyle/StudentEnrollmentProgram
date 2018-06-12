@@ -53,7 +53,7 @@ public class RegisterNewStudent extends JFrame {
 		    // Do something
 			  FileReadWrite st = new FileReadWrite();
 			  
-			  st.WriteStudentFile("",usertext.getText());
+			  st.WriteStudentFile(usertext.getText(),"");
 			  
 			  st.RegisterNew1(usertext.getText(),pwtext.getText(),fnameText.getText(),lnameText.getText(),emailText.getText());
 			  
@@ -66,8 +66,8 @@ public class RegisterNewStudent extends JFrame {
 		{
 		  public void actionPerformed(ActionEvent e)
 		  {
-			//exit application
-		    System.exit(0);
+			  new Login().setVisible(true); //return back to calling GUI window
+			  setVisible(false);
 		  }
 		});
 		
