@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,12 +12,15 @@ public class StudentEnrollments extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L; //unsure what this does; Eclipse added it.
 	JButton bt1; 			//Login
-	//JButton bt2; 			//Cancel
+	JButton bt2; 			//Back
 	JLabel title; 			//Window Title
 	JTextArea list;		 	//course list
+	JButton bt3;			//delete
+	JLabel deleteTitle;
+	JTextField deleteText;
 	
 	public StudentEnrollments(String ID, String uname, String fname, String lname){
-		Student currSt = new Student();
+		//Student currSt = new Student();
 		
 		FileReadWrite_BKP stList = new FileReadWrite_BKP();
 		ArrayList<String> text = stList.ReadStudentFile(ID,uname); //call method to get course data
@@ -34,6 +38,10 @@ public class StudentEnrollments extends JFrame{
 		//assign labels and buttons
 		title = new JLabel("Enrollment History For Student " + fname + " " + lname + "   (ID: " + ID + ")");
 		bt1 = new JButton("Close");
+		bt2 = new JButton("Back");
+		bt3 = new JButton("Un-Enroll");
+		deleteTitle = new JLabel("Enter Course ID to un-enroll ");
+		deleteText = new JTextField(10);
 		
 		list = new JTextArea();
 		list.setText(newText.toString());
@@ -52,12 +60,35 @@ public class StudentEnrollments extends JFrame{
 			  setVisible(false);
 		  }
 		});
-		
+		//action listener - remove enrollment
+		bt3.addActionListener(new ActionListener()
+		{
+		  public void actionPerformed(ActionEvent e)
+		  {
+			  FileReadWrite deleteEn = new FileReadWrite();
+			  
+			  //ask to confirm delete
+			  int result = JOptionPane.showConfirmDialog((Component) null, "Are you sure you want to un-enroll?",
+				        "Alert", JOptionPane.OK_CANCEL_OPTION);
+			  
+			  //System.out.println(result);
+			  
+			  if (result == 0){ 
+				  deleteEn.DeleteEnrollment(deleteText.getText().charAt(0), ID, uname);
+				  dispose(); //close current window - free up resources
+				  new StudentEnrollments(ID,uname,fname,lname); //reload enrollment page with updated student course list
+			  }
+		  }
+		});
+				
 		
 		//add labels and buttons to panels
 		//not sure the ordering so just moved things around until layout looks good
 		header.add(title);
 		select.add(list);
+		select.add(deleteTitle);
+		select.add(deleteText);
+		select.add(bt3);
 		select.add(bt1);
 		
 		//add to frame

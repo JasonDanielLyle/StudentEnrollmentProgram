@@ -163,11 +163,11 @@ public class FileReadWrite {
 
 	}
 	
-	public void DeleteEnrollment(char cID, String name){
+	public void DeleteEnrollment(char cID, String ID, String name){
         
 		try{
-			File file = new File(name + studentCourseList);
-			File temp = new File("Temp-" + name + studentCourseList); //temp file
+			File file = new File(ID + "_" + name + studentCourseList);
+			File temp = new File("Temp-" + ID + "_" + name + studentCourseList); //temp file
 			
 			PrintWriter output = new PrintWriter(new FileWriter(temp));
 			
