@@ -13,7 +13,7 @@ public class StudentEnrollments extends JFrame{
 	JButton bt1; 			//Login
 	//JButton bt2; 			//Cancel
 	JLabel title; 			//Window Title
-	JTextArea list;			//course list
+	JTextArea list;		 	//course list
 	
 	public StudentEnrollments(String ID, String uname, String fname, String lname){
 		Student currSt = new Student();
