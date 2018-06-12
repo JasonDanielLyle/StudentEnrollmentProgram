@@ -53,9 +53,10 @@ public class RegisterNewStudent extends JFrame {
 		    // Do something
 			  FileReadWrite st = new FileReadWrite();
 			  
-			  st.WriteStudentFile(usertext.getText(),"");
-			  
+			 		  
 			  st.RegisterNew1(usertext.getText(),pwtext.getText(),fnameText.getText(),lnameText.getText(),emailText.getText());
+			  
+			  //st.WriteStudentFile(usertext.getText(),""); moved inside RegisterNew1
 			  
 			  setVisible(false);
 		  }
