@@ -2,7 +2,7 @@
 ### _Java Programming I : Team A_
 ##### UC Irvine Extension Spring 2018 
 
-We have built a console-based application that serves as a self-service course registration system like those used by colleges and universities. The program has several key features to ensure it meets the expectations for functionality and security of student information.
+We have built a console-based application that serves as a self-service course registration system like those used by colleges and universities. The program has several key features to ensure it meets functionality expectations for programs of this kind as well as security of student information.
 
 ### Markdown
 
