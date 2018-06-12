@@ -12,7 +12,6 @@ public class Enrollment  extends JFrame {
 	private static final long serialVersionUID = 1L; 
 	JButton bt1; 			//Register
 	JButton bt2; 			//Cancel
-	JButton bt3;			//Un-Register
 	JLabel title; 			//Window Title
 	JLabel coursenum; 		//coursenum field label
 	JTextField coursetext; 	//coursenum text
@@ -75,20 +74,6 @@ public class Enrollment  extends JFrame {
 		  }
 		});
 		
-				//action listener - enroll into class
-		bt3.addActionListener(new ActionListener()
-		{
-		  public void actionPerformed(ActionEvent e)
-		  {
-		   // remove course from the students file
-			  //remove COURSE 
-			
-			//remove ticker to course (-1 enroll)
-			  
-			  
-			  setVisible(false);
-		  }
-		});
 		
 		
 		//add labels and buttons to panels
@@ -99,7 +84,6 @@ public class Enrollment  extends JFrame {
 		select.add(courselist);
 		select.add(bt1);
 		select.add(bt2);
-		select.add(bt3);
 		
 		//add to frame
 		add(header,BorderLayout.NORTH);
