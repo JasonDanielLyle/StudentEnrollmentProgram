@@ -48,6 +48,10 @@ public class Login extends JFrame {
 		        String line = null;
 		        String[] lineArray;
 		        ArrayList<String> studentInfo = new ArrayList<String>();
+		        String ID = "";
+		        String fname = "";
+		        String lname = "";
+		        String uname = "";
 		        boolean userExists = false;
 		        
 				try{
@@ -71,7 +75,11 @@ public class Login extends JFrame {
 		            	 //if yes, set userExists to true and break out of loop
 		            	 if(studentInfo.get(1).equals(usertext.getText()) && studentInfo.get(2).equals(pwtext.getText()) ) {
 		            		userExists = true;
-		            		new Student(studentInfo.get(3),studentInfo.get(4),studentInfo.get(5),studentInfo.get(0));
+		            		Student stud = new Student(studentInfo.get(1),studentInfo.get(3),studentInfo.get(4),studentInfo.get(5),studentInfo.get(0));
+		            		ID = stud.getID();
+		            		fname = stud.getFirstName();
+		            		lname = stud.getLastName();
+		            		uname = stud.getUsername();
 		            		break;
 		            	 }
 		            	 
@@ -90,6 +98,7 @@ public class Login extends JFrame {
 				
 				if(userExists == true){
 					//show enrollment screen
+					new StudentEnrollments(ID,uname,fname,lname);
 				}
 				else{ //output failed authentication using JOptionPane
 					JOptionPane failAuth = new JOptionPane("Failed authentication. Please try again.",JOptionPane.WARNING_MESSAGE);

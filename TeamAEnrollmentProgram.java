@@ -1,4 +1,4 @@
-import java.util.*;
+//import java.util.*;
 
 public class TeamAEnrollmentProgram {
 
@@ -17,6 +17,7 @@ public class TeamAEnrollmentProgram {
    		 System.out.print(list.get(i));
 		}
 		*/
+		
 	}
 
 }
