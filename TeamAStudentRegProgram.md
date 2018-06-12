@@ -1,8 +1,8 @@
-## Welcome to GitHub Pages
+## **Student Registration Program**
+### _Java Programming I : Team A_
+##### UC Irvine Extension Spring 2018 
 
-You can use the [editor on GitHub](https://github.com/uci-java1/team-a-spring-2018/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+We have built a console-based application that serves as a self-service course registration system like those used by colleges and universities. The program has several key features to ensure it meets the expectations for functionality and security of student information.
 
 ### Markdown
 
