@@ -21,6 +21,7 @@ public class RegisterNewStudent extends JFrame {
 	JTextField lnameText; 	//last name text
 	
 	
+	
 	public RegisterNewStudent(){
 		//set size
 		//setLayout(new BorderLayout());
