@@ -102,6 +102,7 @@ public class Login extends JFrame {
 					
 					//show welcome screen
 					new WelcomeScreen(ID, uname, fname, lname);
+					setVisible(false);
 				}
 				else{ //output failed authentication using JOptionPane
 					JOptionPane failAuth = new JOptionPane("Failed authentication. Please try again.",JOptionPane.WARNING_MESSAGE);
@@ -155,6 +156,7 @@ public class Login extends JFrame {
 		//default close
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);	
+		setLocationRelativeTo(null);
 		
 	}
 	

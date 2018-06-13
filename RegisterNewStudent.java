@@ -58,7 +58,13 @@ public class RegisterNewStudent extends JFrame {
 			  
 			  //st.WriteStudentFile(usertext.getText(),""); moved inside RegisterNew1
 			  
-			  setVisible(false);
+			JOptionPane nowregistered = new JOptionPane("You have successfully registered!",JOptionPane.INFORMATION_MESSAGE);
+			JDialog dialog = nowregistered.createDialog("Congratulations!");
+			dialog.setAlwaysOnTop(true); //always on top
+			dialog.setVisible(true); //make visiable
+			
+			new Login();
+			setVisible(false);
 		  }
 		});
 		

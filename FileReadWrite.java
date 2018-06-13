@@ -81,7 +81,7 @@ public class FileReadWrite {
             FileWriter file = new FileWriter(ID + "_" + name + studentCourseList,true);
             
             // write to file. Include comma to separate values
-            file.write(text+",");
+            file.write(text);
 
             // Close file
             file.close();
@@ -112,7 +112,7 @@ public class FileReadWrite {
 	            file.write(ID + "," + name + "," + passwd + "," + fname + "," + lname + "," + email +"\n");
 	            
 	            //set student information in Student class
-	            new Student(name,fname,lname,email,ID+"");
+	            Student sid = new Student(name,fname,lname,email,ID+"");
 		    WriteStudentFile(ID+"", name,""); // creates courselist file for student
 		 
 

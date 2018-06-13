@@ -46,7 +46,7 @@ public class Enrollment  extends JFrame {
 		
 		
 		bt1 = new JButton("Register");
-		bt2 = new JButton("Cancel");
+		bt2 = new JButton("Back");
 		
 		//panels
 		JPanel header = new JPanel(new FlowLayout());
@@ -134,7 +134,8 @@ public class Enrollment  extends JFrame {
 						//check to see if there is room in the course
 						if (courseHasSpace == true) { 
 							//add the courseid to student's file
-							enro.WriteStudentFile(ID, uname, courseid);
+							enro.WriteStudentFile(ID, uname, courseid + "," + coursename + "," + coursedescription + "," + meetingtime + "," 
+												+ startdate + "," + enddate + "\n");
 							JOptionPane nowenrolled = new JOptionPane("You have successfully enrolled in the course",JOptionPane.INFORMATION_MESSAGE);
 							JDialog dialog = nowenrolled.createDialog("Congratulations!");
 							dialog.setAlwaysOnTop(true); //always on top
@@ -166,7 +167,9 @@ public class Enrollment  extends JFrame {
 		  public void actionPerformed(ActionEvent e)
 		  {
 			//exit application
-		    System.exit(0);
+		    //System.exit(0);
+			  new WelcomeScreen(ID, uname, fname, lname);
+			  setVisible(false);
 		  }
 		});
 		
@@ -184,10 +187,11 @@ public class Enrollment  extends JFrame {
 		add(select);
 		
 		//set size
-		setSize(800,300);
+		setSize(1000,300);
 		//default close
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);	
+		setLocationRelativeTo(null);
 		
 	}
 	
