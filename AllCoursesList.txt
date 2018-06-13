@@ -1,2 +1,5 @@
 1,Intro to Java Programming,Beginner programming with Java,08:00AM,06/18/2018,09/24/2018,30,10
 2,Intro to Perl Programming,Beginner programming with Perl,08:00AM,06/18/2018,09/24/2018,30,10
+3,Java Advanced Programming,Advanced programming with Java,12:00PM,07/08/2018,10/15/2018,20,2
+4,Computation Algebra 1,Introduction to Computation Algebra concepts,06:00PM,07/08/2018,10/15/2018,20,2
+5,Statistics 1 for Data Science,Introduction to statistics,06:00PM,09/08/2018,12/23/2018,25,12
