@@ -98,8 +98,10 @@ public class Login extends JFrame {
 				
 				if(userExists == true){
 					//show enrollment screen
-					new StudentEnrollments(ID,uname,fname,lname);
+					//new StudentEnrollments(ID,uname,fname,lname);
 					
+					//show welcome screen
+					new WelcomeScreen(ID, uname, fname, lname);
 				}
 				else{ //output failed authentication using JOptionPane
 					JOptionPane failAuth = new JOptionPane("Failed authentication. Please try again.",JOptionPane.WARNING_MESSAGE);
