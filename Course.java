@@ -54,7 +54,7 @@ public class Course {
 			//new file object
         	//File file = new File("StudentLists.txt");
 			
-			FileReadWrite_BKP courses = new FileReadWrite_BKP();
+			FileReadWrite courses = new FileReadWrite();
 			String text = courses.ReadAllCourses();
 
 			lineArray = text.split("[,]");
