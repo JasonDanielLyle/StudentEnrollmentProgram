@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-public class Enrollment  extends JFrame {
+public class WelcomeScreen  extends JFrame {
 
 	private static final long serialVersionUID = 1L; 
 	JButton bt1; 			//View Courses/Enroll
@@ -16,11 +16,11 @@ public class Enrollment  extends JFrame {
 	JLabel title; 			//Window Title
 	
 	
-	public MainMenu(){
+	public WelcomeScreen(String ID, String uname, String fname, String lname){
 
 		
 		//labels and buttons
-		title = new JLabel("Welcome" + getFirstName +" " + getLastName);
+		title = new JLabel("Welcome" + getFirstName() +" " + getLastName());
 
 		
 		
@@ -39,18 +39,18 @@ public class Enrollment  extends JFrame {
 		{
 		  public void actionPerformed(ActionEvent e)
 		  {
-		    new Enroll();
+		    new Enroll(ID, uname, fname, lname);
 			setVisible(false);
 		  }
 		});
 		
 		
 		//action listener - view current classes/un-enroll screen
-		bt3.addActionListener(new ActionListener()
+		bt2.addActionListener(new ActionListener()
 		{
 		  public void actionPerformed(ActionEvent e)
 		  {
-		    new StudentEnrollments();
+		    new StudentEnrollments(ID,uname,fname,lname);;
 			setVisible(false);
 		  }
 		});
