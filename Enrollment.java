@@ -1,9 +1,11 @@
 
-
+import java.io.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.nio.file.Files;
+import java.util.*;
 
 import javax.swing.*;
 
@@ -24,16 +26,18 @@ public class Enrollment  extends JFrame {
 		//labels and buttons
 		title = new JLabel("Course Enrollment For Student " + fname + " " + lname + "   (ID: " + ID + ")");
 		coursenum = new JLabel(" Please Enter the Course Number: ");
-		coursetext = new JTextField(150);
+		coursetext = new JTextField(15);
 		
 		Course courses = new Course();
 		ArrayList<String> list = courses.getCourselist();
 		String coursestring = new String();
 		StringBuilder sb = new StringBuilder();
-		for(int i=0;i<list.size();i++){
-		 sb.append(list.get(i));
-		 sb.append('\n');
+		for(String l : list){
+		 sb.append("<html>"); //need for multiline label display
+		 sb.append(l);
+		 sb.append("<BR>");
 		}
+		sb.append("</html>");
 		coursestring = sb.toString();
 		
 		courselist = new JLabel(coursestring);
@@ -43,7 +47,6 @@ public class Enrollment  extends JFrame {
 		
 		bt1 = new JButton("Register");
 		bt2 = new JButton("Cancel");
-		bt3 = new JButton("Un-Register");
 		
 		//panels
 		JPanel header = new JPanel(new FlowLayout());
@@ -58,61 +61,57 @@ public class Enrollment  extends JFrame {
 		        String line = null;
 		        String[] lineArray;
 		        ArrayList<String> ClassInfo = new ArrayList<String>();
-		        String coursenum = "";
+		        String courseid = "";
 		        String coursename = "";
 		        String coursedescription = "";
 		        String meetingtime = "";
 				String startdate = "";
 				String enddate = "";
-				String enrollmentlimit = "";
-				String currentenrollment = "";
+				int enrollmentlimit;
+				int currentenrollment;
 		        boolean courseExists = false;
 				boolean courseHasSpace = false;
 				boolean studentEnrolled = false;
 		        
-				try{
-					//new file object
-		        	File file = new File("AllCourseList.txt");
-		     
-		        	//read in file contents
-		        	Scanner input = new Scanner(file);
-		            while(input.hasNext()){
-		            	line = input.nextLine();
-		            	lineArray = line.split("[,]");
+				
+		        for (String l : list) {
+						//line = input.nextLine();
+		            lineArray = l.split("[,]");
 		            	
 		            	//add data to the arraylist
-		            	 for (int i = 0; i < lineArray.length; i++) {
-		            		 ClassInfo.add(lineArray[i]);
-		            	 }
+		            for (int i = 0; i < lineArray.length; i++) {
+		            	ClassInfo.add(lineArray[i]);
+		            }
 		            	 
 		            	 
 		            	 //check the courseid and make sure it's in the file
-		            	 if(ClassInfo.get(0).equals(coursetext.getText())) {
+		            
+		            if(ClassInfo.get(0).equals(coursetext.getText())) {
 						 //if yes, set courseExists to true and break out of loop
-		            		courseExists = true;
-		            		Courses course = new Course(ClassInfo.get(0),ClassInfo.get(1),ClassInfo.get(2),ClassInfo.get(3),ClassInfo.get(4),ClassInfo.get(5),ClassInfo.get(6),,ClassInfo.get(7));
+		            	courseExists = true;
+		            	Course course = new Course(ClassInfo.get(0),ClassInfo.get(1),ClassInfo.get(2),ClassInfo.get(3),ClassInfo.get(4),ClassInfo.get(5),Integer.parseInt(ClassInfo.get(6)),Integer.parseInt(ClassInfo.get(7)));
 		            		
-							courseid = course.getCourseID();
-		            		coursename = course.getCourseName();
-		            		coursedescription = course.getCourseDescription();
-		            		meetingtime = course.getMeetingTime();
-							startdate = course.getStartDate();
-							enddate = course.getEndDate();
-							enrollmentlimit = course.getEnrollmentLimit();
-							currentenrollment = course.getCurrentEnrollment();
-		            		break;
-		            	 }
-		            	 
-		            	 ClassInfo.clear(); //no match so clear and load next line
-		            		 
+						courseid = course.getCourseID();
+		            	coursename = course.getCourseName();
+		            	coursedescription = course.getCourseDescription();
+		            	meetingtime = course.getMeetingTime();
+						startdate = course.getStartDate();
+						enddate = course.getEndDate();
+						enrollmentlimit = course.getEnrollmentLimit();
+						currentenrollment = course.getCurrentEnrollment();
+							
+						if (course.addEnrollment() == true) { 
+							courseHasSpace = true;
+						}
+		            	break;
 		            }
+		            	 
+		            ClassInfo.clear(); //no match so clear and load next line
+		            		 
+		          }
 
 		            // Close file
-		            input.close();  
-				}
-				catch(FileNotFoundException ex) {
-		            System.out.println("Unable to open file.");                
-		        }
+		            //input.close();  
 				
 				//System.out.println(userExists);
 				
@@ -120,8 +119,8 @@ public class Enrollment  extends JFrame {
 					//check if student already enrolled in the course
 					FileReadWrite enro = new FileReadWrite();
 					ArrayList<String> enrolledCourses = enro.ReadStudentFile(ID, uname);
-					for (i=0; i<enrolledCourses.size(); i++) {
-						if(enrolledCourses[i] == courseid) {
+					for (String c : enrolledCourses) {
+						if(c.equals(coursetext.getText())) {
 							studentEnrolled = true;
 							break;
 						}
@@ -133,9 +132,13 @@ public class Enrollment  extends JFrame {
 						dialog.setVisible(true); //make visiable
 					} else {
 						//check to see if there is room in the course
-						if (course.addEnrollment() == true) { 
+						if (courseHasSpace == true) { 
 							//add the courseid to student's file
 							enro.WriteStudentFile(ID, uname, courseid);
+							JOptionPane nowenrolled = new JOptionPane("You have successfully enrolled in the course",JOptionPane.INFORMATION_MESSAGE);
+							JDialog dialog = nowenrolled.createDialog("Congratulations!");
+							dialog.setAlwaysOnTop(true); //always on top
+							dialog.setVisible(true); //make visiable
 					
 						} else { //no room in course
 							JOptionPane noRoom = new JOptionPane("Failed to enroll, this course is full.",JOptionPane.WARNING_MESSAGE);
@@ -156,11 +159,7 @@ public class Enrollment  extends JFrame {
 		  }
 });
 			  
-			  
-			  setVisible(false);
-		  }
-		});
-		
+			
 		//action listener - exit program
 		bt2.addActionListener(new ActionListener()
 		{
@@ -177,10 +176,9 @@ public class Enrollment  extends JFrame {
 		header.add(title);
 		select.add(coursenum);
 		select.add(coursetext);
-		select.add(courselist);
 		select.add(bt1);
 		select.add(bt2);
-		
+		select.add(courselist);
 		//add to frame
 		add(header,BorderLayout.NORTH);
 		add(select);

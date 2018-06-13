@@ -57,7 +57,7 @@ public class Course {
 			FileReadWrite courses = new FileReadWrite();
 			String text = courses.ReadAllCourses();
 
-			lineArray = text.split("[,]");
+			lineArray = text.split("\n");
             	
         	//add data to the arraylist
         	 for (int i = 0; i < lineArray.length; i++) {

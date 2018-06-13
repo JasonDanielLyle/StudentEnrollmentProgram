@@ -21,7 +21,6 @@ public class RegisterNewStudent extends JFrame {
 	JTextField lnameText; 	//last name text
 	
 	
-	
 	public RegisterNewStudent(){
 		//set size
 		//setLayout(new BorderLayout());
@@ -57,7 +56,7 @@ public class RegisterNewStudent extends JFrame {
 			 		  
 			  st.RegisterNew1(usertext.getText(),pwtext.getText(),fnameText.getText(),lnameText.getText(),emailText.getText());
 			  
-			  //st.WriteStudentFile(usertext.getText(),""); //moved inside RegisterNew1
+			  //st.WriteStudentFile(usertext.getText(),""); moved inside RegisterNew1
 			  
 			  setVisible(false);
 		  }

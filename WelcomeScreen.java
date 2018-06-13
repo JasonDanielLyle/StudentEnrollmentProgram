@@ -20,7 +20,7 @@ public class WelcomeScreen  extends JFrame {
 
 		
 		//labels and buttons
-		title = new JLabel("Welcome" + getFirstName() +" " + getLastName());
+		title = new JLabel("Welcome " + fname + " " + lname);
 
 		
 		
@@ -39,7 +39,7 @@ public class WelcomeScreen  extends JFrame {
 		{
 		  public void actionPerformed(ActionEvent e)
 		  {
-		    new Enroll(ID, uname, fname, lname);
+		    new Enrollment(ID, uname, fname, lname);
 			setVisible(false);
 		  }
 		});

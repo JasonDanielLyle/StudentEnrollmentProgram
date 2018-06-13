@@ -90,7 +90,7 @@ public class FileReadWrite {
             System.out.println("Error writing to file '" + Integer.parseInt(getLastID()) + 1 + "_" + name + studentCourseList + "'");
         }
 	}
-	 
+	
 	//write new student to StudentLists.txt file -- unique by ID
 	public void RegisterNew(String name, String passwd/*, String fname, String lname*/, String email){
 		//deleting this method causes RegisterNew1 method to error.

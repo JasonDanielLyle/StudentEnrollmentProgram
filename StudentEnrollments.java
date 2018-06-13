@@ -4,8 +4,6 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.logging.Formatter;
-
 import javax.swing.*;
 
 public class StudentEnrollments extends JFrame{
@@ -31,16 +29,8 @@ public class StudentEnrollments extends JFrame{
 		//loop through arraylist and store in a string
 		//the for loop conditions is different. Had to use inital index of 1 and increase size by 1.
 		//this gave the desired formatting
-		String ntext = "";
 		for (int i=1;i<text.size()+1;i++){
-			
-			if(text.get(i-1).length() <= 25){
-				newText += String.format("%-35s",text.get(i-1));
-			}
-			else{
-				ntext = text.get(i-1).substring(0, 25);
-				newText += String.format("%-35s",ntext);
-			}
+			newText += text.get(i-1) + "\t";
 			if(i%6 == 0)
 				newText += "\n";
 		}
@@ -53,11 +43,8 @@ public class StudentEnrollments extends JFrame{
 		deleteTitle = new JLabel("Enter Course ID to un-enroll ");
 		deleteText = new JTextField(10);
 		
-		String header1 = String.format("%-35s%-35s%-35s%-35s%-35s%-35s", "Course ID", "Course Name", "Course Description", 
-									"Course Time", "Start Date", "End Date");
-		
 		list = new JTextArea();
-		list.setText(header1 + "\n" + newText);
+		list.setText(newText.toString());
 		list.setEditable(false); //read only field
 		
 		//panels
@@ -109,7 +96,7 @@ public class StudentEnrollments extends JFrame{
 		add(select);
 		
 		//set size
-		setSize(1200,300);
+		setSize(1000,300);
 		//default close
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);	
