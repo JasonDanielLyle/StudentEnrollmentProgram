@@ -89,14 +89,14 @@ public class StudentEnrollments extends JFrame{
 				  
 				//check if student already enrolled in the course
 				
-				for (String c : enrolledCourses) {
-					if(c.equals(deleteText.getText())) {
+				for (int i=0;i<enrolledCourses.size();i++) {
+					if(enrolledCourses.get(i).equals(deleteText.getText())) {
 						deleteEn.DeleteEnrollment(deleteText.getText().charAt(0), ID, uname);
 						dispose(); //close current window - free up resources
 						new StudentEnrollments(ID,uname,fname,lname); //reload enrollment page with updated student course list
 						break;
 					}
-					else{
+					if(i==enrolledCourses.size()-1){
 						JOptionPane noCourse = new JOptionPane("Course does not exist. Please input a valid course.",JOptionPane.WARNING_MESSAGE);
 						JDialog dialog = noCourse.createDialog("Error!");
 						dialog.setAlwaysOnTop(true); //always on top
