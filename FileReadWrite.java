@@ -80,9 +80,8 @@ public class FileReadWrite {
             // Use FileWriter instead of File so we can append to existing file
             FileWriter file = new FileWriter(ID + "_" + name + studentCourseList,true);
             
-            // write to file. Include \n since write doesn't
-            //automatically add a newline
-            file.write(text+"\n");
+            // write to file. Include comma to separate values
+            file.write(text+",");
 
             // Close file
             file.close();
